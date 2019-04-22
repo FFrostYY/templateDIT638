@@ -29,10 +29,11 @@ RUN cat /etc/apk/repositories && \
 RUN apk update && \
     apk --no-cache add \
     libstdc++ libgcc && \
-    mkdir /opt/example
-WORKDIR /opt/example
+    mkdir /opt
+
+WORKDIR /opt
 COPY --from=builder /tmp/example .
-RUN [ "cross-build-end" ]
-CMD ["/opt/example --cid=112 --verbose"]
 ENTRYPOINT ["/opt/example"]
+
+RUN [ "cross-build-end" ]
 

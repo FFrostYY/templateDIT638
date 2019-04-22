@@ -19,9 +19,9 @@ FROM alpine:3.7
 MAINTAINER Yue Kang yuek@chalmers.se
 RUN apk update && \
     apk --no-cache add \
-        libstdc++ libgcc && \
-    mkdir /opt/example
-WORKDIR /opt/example
+    libstdc++ libgcc && \
+    mkdir /opt
+
+WORKDIR /opt
 COPY --from=builder /tmp/example .
-CMD ["/opt/example --cid=112"]
 ENTRYPOINT ["/opt/example"]
